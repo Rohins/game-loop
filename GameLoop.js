@@ -10,16 +10,22 @@ class GameLoop {
     constructor(main, speed = 1000) {
         this.paused = false;
         this.speed = speed;
-        this.main = main.bind(this);
+        this.main = this.create_loop(main);
         this.game_loop = window.setInterval(this.main, this.speed);
     }
 
+    // Creates a wrapper function around main so it doesn't 
+    // run when it is paused.
     create_loop(main) {
+        this.main = main.bind(this);
+
         var loop = function () {
             if (this.paused = false) {
                 this.main();
             }
         }.bind(this);
+
+        return loop;
     }
 
     // Sets the pause variable to true, pausing the game loop.
