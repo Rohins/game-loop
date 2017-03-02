@@ -10,8 +10,16 @@ class GameLoop {
     constructor(main, speed = 1000) {
         this.paused = false;
         this.speed = speed;
-        this.main = main;
-        this.game_loop = window.setInterval(this.main.bind(this), this.speed);
+        this.main = main.bind(this);
+        this.game_loop = window.setInterval(this.main, this.speed);
+    }
+
+    create_loop(main) {
+        var loop = function () {
+            if (this.paused = false) {
+                this.main();
+            }
+        }.bind(this);
     }
 
     // Sets the pause variable to true, pausing the game loop.
