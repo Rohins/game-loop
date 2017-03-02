@@ -1,6 +1,6 @@
 {
   "name": "game-loop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A class for creating a gameloop. Has functionality for pausing and changing speed of loop.",
   "main": "GameLoop.js",
   "scripts": {
